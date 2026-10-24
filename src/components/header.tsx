@@ -3,7 +3,7 @@ import Logo from '../assets/logo.png'
 
 function Header() {
   return (
-    <header className="sticky top-0 z-[100] flex flex-row items-center justify-between bg-[#FFD700] px-8 py-3 shadow-[0_2px_8px_rgba(0,0,0,0.12)]">
+    <header className="sticky top-0 z-[100] flex flex-row items-center justify-between bg-amber-200 px-8 py-3 shadow-[0_2px_8px_rgba(0,0,0,0.12)]">
       <Link to="/" className="inline-block">
         <img
           src={Logo}
@@ -48,7 +48,7 @@ function Header() {
 
       <Link
         to="/bilhetes"
-        className="whitespace-nowrap rounded-xl bg-[#2E7D32] px-5 py-2.5 text-[0.95rem] font-bold text-white shadow-[0_2px_6px_rgba(0,0,0,0.15)] transition duration-200 ease-in-out hover:bg-[#1B5E20] hover:-translate-y-0.5 hover:shadow-[0_4px_10px_rgba(0,0,0,0.2)] active:translate-y-0"
+        className="whitespace-nowrap rounded-xl bg-green-800 px-5 py-2.5 text-[0.95rem] font-bold text-white shadow-[0_2px_6px_rgba(0,0,0,0.15)] transition duration-200 ease-in-out hover:bg-green-900 hover:-translate-y-0.5 hover:shadow-[0_4px_10px_rgba(0,0,0,0.2)] active:translate-y-0"
       >
         Comprar Bilhete
       </Link>

@@ -2,12 +2,12 @@ import slideshow1 from '../assets/slideshow1.jpeg'
 
 function Gallery() {
   return (
-    <section className="rounded-xl border border-[#5D4037] bg-[#4E342E] p-8 text-center">
+    <section className="rounded-xl border border-yellow-900 bg-orange-950/40 p-8 text-center">
       <div className="mb-6">
-        <p className="mb-1 text-[0.85rem] font-bold tracking-[0.08em] text-[#aaa] uppercase">
+        <p className="mb-1 text-[0.85rem] font-bold tracking-[0.08em] text-white uppercase">
           Galeria
         </p>
-        <h2 className="m-0 text-2xl font-bold text-[#FFD700]">
+        <h2 className="m-0 text-2xl font-bold text-amber-200">
           Destaques do Festival
         </h2>
       </div>
@@ -21,13 +21,13 @@ function Gallery() {
         <div className="mt-4 flex justify-center gap-3">
           <button
             type="button"
-            className="cursor-pointer rounded-xl bg-[#FFD700] px-5 py-2.5 font-bold text-[#1a1a2e] shadow-[0_2px_6px_rgba(0,0,0,0.15)] transition duration-200 ease-in-out hover:bg-[#e6c200] hover:-translate-y-0.5 hover:shadow-[0_4px_10px_rgba(0,0,0,0.2)] active:translate-y-0"
+            className="cursor-pointer rounded-xl bg-amber-200 px-5 py-2.5 font-bold text-black shadow-[0_2px_6px_rgba(0,0,0,0.15)] transition duration-200 ease-in-out hover:bg-[#e6c200] hover:-translate-y-0.5 hover:shadow-[0_4px_10px_rgba(0,0,0,0.2)] active:translate-y-0"
           >
             Anterior
           </button>
           <button
             type="button"
-            className="cursor-pointer rounded-xl bg-[#2E7D32] px-5 py-2.5 font-bold text-white shadow-[0_2px_6px_rgba(0,0,0,0.15)] transition duration-200 ease-in-out hover:bg-[#1B5E20] hover:-translate-y-0.5 hover:shadow-[0_4px_10px_rgba(0,0,0,0.2)] active:translate-y-0"
+            className="cursor-pointer rounded-xl bg-green-800 px-5 py-2.5 font-bold text-white shadow-[0_2px_6px_rgba(0,0,0,0.15)] transition duration-200 ease-in-out hover:bg-green-900 hover:-translate-y-0.5 hover:shadow-[0_4px_10px_rgba(0,0,0,0.2)] active:translate-y-0"
           >
             Seguinte
           </button>

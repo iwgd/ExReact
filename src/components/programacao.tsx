@@ -2,7 +2,7 @@ function Programacao() {
   return (
     <div className="flex flex-1 flex-col gap-8 md:basis-2/3">
       <section>
-        <h2 className="mb-2 text-2xl font-bold text-[#FFD700]">Sobre a Festa</h2>
+        <h2 className="mb-2 text-2xl font-bold text-amber-200">Sobre a Festa</h2>
         <p className="leading-relaxed">
           A Festa do Pato 2030 é um evento anual que celebra a cultura e a
           tradição local. Venha divertir-se conosco!
@@ -10,15 +10,15 @@ function Programacao() {
       </section>
 
       <section>
-        <h2 className="mb-3 text-2xl font-bold text-[#FFD700]">Programação</h2>
+        <h2 className="mb-3 text-2xl font-bold text-amber-200">Programação</h2>
         <table className="w-full border-collapse text-left">
           <thead>
-            <tr className="border-b border-[#5D4037]">
-              <th className="py-2 pr-4 font-bold text-[#FFD700]">Hora</th>
-              <th className="py-2 font-bold text-[#FFD700]">Atividade</th>
+            <tr className="border-b border-yellow-900">
+              <th className="py-2 pr-4 font-bold text-amber-200">Hora</th>
+              <th className="py-2 font-bold text-amber-200">Atividade</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#5D4037]/50">
+          <tbody className="divide-y divide-yellow-900/50">
             <tr>
               <td className="py-2 pr-4 font-medium">10:00</td>
               <td className="py-2">Abertura da festa</td>
