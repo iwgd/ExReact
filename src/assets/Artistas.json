@@ -1,0 +1,22 @@
+{
+  "artistas": [
+    {
+      "nome": "Quim Barreiros",
+      "foto": "quim_barreiros.jpeg",
+      "descricao": "O mestre indiscutível da música festiva portuguesa e dos grandes êxitos populares, conhecido pelas suas letras bem-dispostas e pela icónica sanfona.",
+      "atuacao": "15/ago às 22:00"
+    },
+    {
+      "nome": "Rosinha",
+      "foto": "rosinha.jpeg",
+      "descricao": "A carismática artista popular portuguesa famosa pelas suas canções bem-dispostas de duplo sentido e contagiante energia em palco.",
+      "atuacao": "16/ago às 22:30"
+    },
+    {
+      "nome": "José Malhoa",
+      "foto": "jose_malhoa.jpeg",
+      "descricao": "Uma das vozes mais populares da música ligeira portuguesa, com uma carreira recheada de êxitos e pistas de dança animadas.",
+      "atuacao": "17/ago às 21:30"
+    }
+  ]
+}
