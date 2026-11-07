@@ -44,6 +44,16 @@ function Header() {
         >
           Flyer
         </NavLink>
+        <NavLink
+          to="/artistas"
+          className={({ isActive }) =>
+            `font-extrabold text-green-700 hover:underline ${
+              isActive ? 'underline' : ''
+            }`
+          }
+        >
+          Artistas
+        </NavLink>
       </nav>
 
       <Link
