@@ -1,9 +1,12 @@
 import slideshow1 from '../assets/slideshow1.jpeg'
+import Artistas from '../assets/Artistas.json'
 
 function Gallery() {
+    const entidades = Artistas.entidades
   return (
     <section className="rounded-xl border border-yellow-900 bg-orange-950/40 p-8 text-center">
       <div className="mb-6">
+
         <p className="mb-1 text-[0.85rem] font-bold tracking-[0.08em] text-white uppercase">
           Galeria
         </p>
@@ -11,7 +14,17 @@ function Gallery() {
           Destaques do Festival
         </h2>
       </div>
-
+        <div>
+            {entidades.map((entidade) => (
+          <Entidade
+            key={entidade.nome}
+            nome={entidade.nome}
+            imagem={entidade.imagem}
+            descricao={entidade.descricao}
+            atuacao={entidade.atuacao}
+          />
+        ))}
+        </div>
       <div className="text-center">
         <img
           src={slideshow1}
