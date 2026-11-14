@@ -7,7 +7,8 @@ import Candidaturas from "./components/candidaturas";
 import Flyer from "./components/flyer";
 import Bilhetes from "./components/bilhetes";
 import Artistas from "./components/artistas";
-import Formulario from './components/form_artist.tsx';
+import Resultados from "./components/resultados";
+import Formulario from './components/formulario.tsx';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/bilhetes" element={<Bilhetes />} />
         <Route path="/artistas" element={<Artistas />} />
         <Route path="/formulario" element={<Formulario />} />
+        <Route path="/resultados" element={<Resultados />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
