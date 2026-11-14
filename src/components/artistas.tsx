@@ -1,5 +1,5 @@
 import ArtistasList  from '../assets/Artistas.json';
-import Formulario from './form_artist.tsx';
+
 
 function Artistas() {
   const entidades = ArtistasList.artistas;
@@ -28,7 +28,7 @@ function Artistas() {
         </div>
       ))}
         </div>
-      <Formulario artistas={entidades}/>
+
     </div>
   </main>
   );

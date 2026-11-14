@@ -54,6 +54,16 @@ function Header() {
         >
           Artistas
         </NavLink>
+        <NavLink
+          to="/formulario"
+          className={({ isActive }) =>
+            `font-extrabold text-green-700 hover:underline ${
+              isActive ? 'underline' : ''
+            }`
+          }
+        >
+          Formulario
+        </NavLink>
       </nav>
 
       <Link

@@ -1,11 +1,11 @@
 import { useState } from "react";
+import ArtistasList  from '../assets/Artistas.json';
 
 
-
-function Formulario({ artistas }) {
+function Formulario() {
 
   const [formValues, setFormValues] = useState<[]>(
-    artistas.map((artista) => ({
+    ArtistasList.artistas.map((artista) => ({
       nome: artista.nome,
       favorito: false,
     }))
@@ -17,10 +17,14 @@ function Formulario({ artistas }) {
   };
 
   return (
+      <main className="flex flex-1 flex-col items-center justify-center p-8">
+    <div className="w-full max-w-4xl">
+      <h1 className="mb-8 text-center text-3xl font-bold text-amber-200">
+        Formulario de Artistas
+      </h1>
     <div className="mt-8 rounded-xl border border-yellow-900 bg-orange-950/40 p-8 text-center shadow-[0_4px_12px_rgba(0,0,0,0.3)]">
-      <h2 className="mb-4 text-xl font-bold text-amber-200">Inquérito</h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        {artistas.map((artista, index) => (
+        {ArtistasList.artistas.map((artista, index) => (
           <label key={artista.nome} className="flex items-center gap-2 text-white cursor-pointer">
             <input
               className="h-4 w-4 accent-green-800"
@@ -48,6 +52,8 @@ function Formulario({ artistas }) {
         </button>
       </form>
     </div>
+        </div>
+  </main>
   );
 }
 
