@@ -1,8 +1,22 @@
 import slideshow1 from "../assets/slideshow1.jpeg";
 import slideshow2 from "../assets/slideshow2.jpeg";
 import slideshow3 from "../assets/slideshow3.jpeg";
+import { useState } from "react";
 
 function Gallery() {
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [slideshow1, slideshow2, slideshow3];
+
+  function nextSlide() {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  }
+
+  function previousSlide() {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  }
+
   return (
     <section className="rounded-xl border border-yellow-900 bg-orange-950/40 p-8 text-center">
       <div className="mb-6">
@@ -15,7 +29,7 @@ function Gallery() {
       </div>
       <div className="text-center">
         <img
-          src={slideshow1}
+          src={slides[currentSlide]}
           alt="Slideshow do evento"
           className="mx-auto h-[350px] w-auto max-w-full rounded-xl object-cover shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
         />
@@ -23,12 +37,14 @@ function Gallery() {
           <button
             type="button"
             className="cursor-pointer rounded-xl bg-amber-200 px-5 py-2.5 font-bold text-black shadow-[0_2px_6px_rgba(0,0,0,0.15)] transition duration-200 ease-in-out hover:bg-[#e6c200] hover:-translate-y-0.5 hover:shadow-[0_4px_10px_rgba(0,0,0,0.2)] active:translate-y-0"
+            onClick={previousSlide}
           >
             Anterior
           </button>
           <button
             type="button"
             className="cursor-pointer rounded-xl bg-green-800 px-5 py-2.5 font-bold text-white shadow-[0_2px_6px_rgba(0,0,0,0.15)] transition duration-200 ease-in-out hover:bg-green-900 hover:-translate-y-0.5 hover:shadow-[0_4px_10px_rgba(0,0,0,0.2)] active:translate-y-0"
+            onClick={nextSlide}
           >
             Seguinte
           </button>

@@ -1,56 +1,61 @@
-import { useState } from 'react'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const xingamentosAntigos = [
-  'alcoviteiro',
-  'biltre',
-  'beócio',
-  'calhorda',
-  'energúmeno',
-  'janota',
-  'mentecapto',
-  'mequetrefe',
-  'mocorongo',
-  'paspalho',
-  'palerma',
-  'patife',
-  'pulha',
-  'purgante',
-  'sacripanta',
-]
+  "alcoviteiro",
+  "biltre",
+  "beócio",
+  "calhorda",
+  "energúmeno",
+  "janota",
+  "mentecapto",
+  "mequetrefe",
+  "mocorongo",
+  "paspalho",
+  "palerma",
+  "patife",
+  "pulha",
+  "purgante",
+  "sacripanta",
+];
 
 function Candidaturas() {
-  const [nome, setNome] = useState('')
-  const [email, setEmail] = useState('')
-  const [comentario, setComentario] = useState('')
-  const [submitted, setSubmitted] = useState(false)
-  const [avisoInapropriado, setAvisoInapropriado] = useState<string | null>(null)
 
-  const handleComentarioChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const texto = e.target.value
-    setComentario(texto)
+  const navigate = useNavigate();
 
-    const textoLower = texto.toLowerCase()
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [comentario, setComentario] = useState("");
+  const [avisoInapropriado, setAvisoInapropriado] = useState<string | null>(
+    null,
+  );
+
+  const handleComentarioChange = (event) => {
+    const texto = event.target.value;
+    setComentario(texto);
+
+    const textoLower = texto.toLowerCase();
     const palavraEncontrada = xingamentosAntigos.find((palavra) =>
-      textoLower.includes(palavra)
-    )
+      textoLower.includes(palavra),
+    );
 
     if (palavraEncontrada) {
-      setAvisoInapropriado(palavraEncontrada)
+      setAvisoInapropriado(palavraEncontrada);
     } else {
-      setAvisoInapropriado(null)
+      setAvisoInapropriado(null);
     }
-  }
+  };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+  const handleSubmit = (event) => {
+    event.preventDefault();
     if (avisoInapropriado) {
       alert(
-        `Palavra imprópria detetada: "${avisoInapropriado}". Por favor, remove-a para continuar.`
-      )
-      return
+        `Palavra imprópria detetada: "${avisoInapropriado}". Por favor, remove-a para continuar.`,
+      );
+      return;
     }
-    setSubmitted(true)
-  }
+    navigate("/submetido", { state: { candidatura: { nome, email, comentario } } });
+  };
 
   return (
     <main className="flex flex-1 flex-col items-center justify-center p-8">
@@ -58,97 +63,74 @@ function Candidaturas() {
         <h1 className="mb-6 text-center text-3xl font-bold text-amber-200">
           Candidatura
         </h1>
-
-        {submitted ? (
-          <div className="rounded-xl border border-yellow-900 bg-orange-950/40 p-8 text-center shadow-[0_4px_12px_rgba(0,0,0,0.3)]">
-            <h2 className="text-2xl font-bold text-amber-200">
-              ✓ Candidatura aceite!
-            </h2>
-            <p className="mt-3 text-lg text-white">
-              Obrigado pelo teu interesse, {nome}! Entraremos em contacto em breve através de {email}.
-            </p>
-            <button
-              onClick={() => {
-                setSubmitted(false)
-                setNome('')
-                setEmail('')
-                setComentario('')
-                setAvisoInapropriado(null)
-              }}
-              className="mt-6 rounded-xl bg-green-800 px-6 py-2.5 font-bold text-white shadow-[0_2px_6px_rgba(0,0,0,0.15)] transition duration-200 ease-in-out hover:bg-green-900 hover:-translate-y-0.5"
-            >
-              Enviar Nova Candidatura
-            </button>
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-4 rounded-xl border border-yellow-900 bg-orange-950/40 p-8 shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
+        >
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="name" className="font-bold text-amber-200">
+              Nome:
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              placeholder="O teu nome"
+              className="rounded-xl border border-yellow-900 bg-[#3E2723] p-3 text-white placeholder-neutral-400 focus:border-amber-200 focus:outline-none"
+            />
           </div>
-        ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col gap-4 rounded-xl border border-yellow-900 bg-orange-950/40 p-8 shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
+
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="email" className="font-bold text-amber-200">
+              Email:
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="exemplo@email.com"
+              className="rounded-xl border border-yellow-900 bg-[#3E2723] p-3 text-white placeholder-neutral-400 focus:border-amber-200 focus:outline-none"
+            />
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="comentario" className="font-bold text-amber-200">
+              Comentário (opcional):
+            </label>
+            <textarea
+              id="comentario"
+              name="comentario"
+              rows={4}
+              value={comentario}
+              onChange={handleComentarioChange}
+              placeholder="Deixa uma mensagem ou comentário..."
+              className="rounded-xl border border-yellow-900 bg-[#3E2723] p-3 text-white placeholder-neutral-400 focus:border-amber-200 focus:outline-none"
+            />
+            {avisoInapropriado && (
+              <p className="text-sm font-semibold text-red-400">
+                Palavra imprópria detetada: "{avisoInapropriado}". Por favor,
+                remove-a para continuar.
+              </p>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            disabled={Boolean(avisoInapropriado)}
+            className="mt-2 rounded-xl bg-green-800 px-6 py-3 font-bold text-white shadow-[0_2px_6px_rgba(0,0,0,0.15)] transition duration-200 ease-in-out hover:bg-green-900 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            <div className="flex flex-col gap-1.5">
-              <label htmlFor="name" className="font-bold text-amber-200">
-                Nome:
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-                placeholder="O teu nome"
-                className="rounded-xl border border-yellow-900 bg-[#3E2723] p-3 text-white placeholder-neutral-400 focus:border-amber-200 focus:outline-none"
-              />
-            </div>
-
-            <div className="flex flex-col gap-1.5">
-              <label htmlFor="email" className="font-bold text-amber-200">
-                Email:
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="exemplo@email.com"
-                className="rounded-xl border border-yellow-900 bg-[#3E2723] p-3 text-white placeholder-neutral-400 focus:border-amber-200 focus:outline-none"
-              />
-            </div>
-
-            <div className="flex flex-col gap-1.5">
-              <label htmlFor="comentario" className="font-bold text-amber-200">
-                Comentário (opcional):
-              </label>
-              <textarea
-                id="comentario"
-                name="comentario"
-                rows={4}
-                value={comentario}
-                onChange={handleComentarioChange}
-                placeholder="Deixa uma mensagem ou comentário..."
-                className="rounded-xl border border-yellow-900 bg-[#3E2723] p-3 text-white placeholder-neutral-400 focus:border-amber-200 focus:outline-none"
-              />
-              {avisoInapropriado && (
-                <p className="text-sm font-semibold text-red-400">
-                  Palavra imprópria detetada: "{avisoInapropriado}". Por favor, remove-a para continuar.
-                </p>
-              )}
-            </div>
-
-            <button
-              type="submit"
-              disabled={Boolean(avisoInapropriado)}
-              className="mt-2 rounded-xl bg-green-800 px-6 py-3 font-bold text-white shadow-[0_2px_6px_rgba(0,0,0,0.15)] transition duration-200 ease-in-out hover:bg-green-900 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Enviar Candidatura
-            </button>
-          </form>
-        )}
+            Enviar Candidatura
+          </button>
+        </form>
       </div>
     </main>
-  )
+  );
 }
 
-export default Candidaturas
+export default Candidaturas;

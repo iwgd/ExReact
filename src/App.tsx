@@ -8,6 +8,7 @@ import Flyer from "./components/flyer";
 import Bilhetes from "./components/bilhetes";
 import Artistas from "./components/artistas";
 import Resultados from "./components/resultados";
+import Sucesso from "./components/sucesso";
 import Formulario from './components/formulario.tsx';
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
         <Route path="/artistas" element={<Artistas />} />
         <Route path="/formulario" element={<Formulario />} />
         <Route path="/resultados" element={<Resultados />} />
+        <Route path="/checkout" element={<Sucesso />} />
+        <Route path="/submetido" element={<Sucesso />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
